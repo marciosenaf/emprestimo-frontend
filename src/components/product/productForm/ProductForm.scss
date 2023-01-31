@@ -1,0 +1,129 @@
+.add-product {
+margin-bottom: 3rem;
+margin-left: 10px;
+
+
+  form{
+    display: flex;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-flow:row wrap;
+    gap: 3rem;
+  }
+
+  .inputs{
+    align-items: flex-start;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  form {
+
+    label {
+      padding: 4.4px 74px;
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: white;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"] {
+      font-weight: 300;
+      padding: 1rem;
+      border: 1px solid #777;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.Select{
+  font-weight: 300;
+  padding: 1rem 26px;
+  border: 1px solid #777;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.Select option {
+  width: 150px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.imagefile{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.image-preview {
+  width: 55%;
+  height: 55%;
+  max-width: 420px;
+  max-height: 230px;
+  border-radius: 1px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.image-preview img {
+  width: 100%;
+}
+
+.image-show {
+  display: block;
+}
+
+.editor{
+  width: clamp(500px, 100%, 400px,);
+background-color: rgb(255, 255, 255);
+border: 1px solid #777;
+border-radius: 4px;
+}
+
+input[type="file"] {
+  display: none;
+}
+.noimage{
+  color: #333;
+  margin-top: 10rem;
+  font-size:12px;
+
+}
+
+.image{
+  padding: 10px 10px;
+  width: 100%;
+  background: var(--dark-blue);
+  color: #ccc;
+  display: block;
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.image:hover{
+color: #333;
+background: #fff;
+}
+
+
+.--btns-primary-products{
+  padding: 8.6px 70px;
+  border-radius: 8px;
+  font-size: 15px ;
+  color: #fff;
+  border-color: #777;
+  background: var(--dark-blue);
+  border-radius: 8px;
+}
+.--btns-primary-products:hover {
+  color: var(--dark-blue);
+  background-color:#fff;
+  font-size: 15px;
+}

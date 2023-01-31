@@ -1,0 +1,48 @@
+.info-box {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  height: 7rem;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  margin-right: 10px;
+  max-width: 22rem;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  transition: all .3s;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 8px;
+max-width: 241.5px;
+  
+
+
+
+  &:hover {
+    transform: translateY(-5px);
+
+  }
+
+  .info-icon {
+    padding: 0 25px;
+    color: #fff;
+  }
+  .info-text > * {
+    color: #fff;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-bottom: 3px solid var(--light-blue);
+    padding: 5px;
+    background-color: #f5f6fa;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .info-box {
+    max-width: 100%;
+  }
+}
