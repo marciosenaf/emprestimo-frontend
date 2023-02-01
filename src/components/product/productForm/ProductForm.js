@@ -27,7 +27,7 @@ const ProductForm = ({
                     />
 
                     <select
-                        class="Select"
+                        className="Select"
                         name="category"
                         value={product?.category}
                         onChange={handleInputChange}
