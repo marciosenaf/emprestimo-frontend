@@ -23,15 +23,8 @@ const ProductForm = ({
                         name="name"
                         value={product?.name}
                         onChange={handleInputChange}
+                        maxLength="15"
                     />
-
-                    {/* <input
-                        type="text"
-                        placeholder="Status"
-                        name="category"
-                        value={product?.category}
-                        onChange={handleInputChange}
-                    /> */}
 
                     <select
                         class="Select"
@@ -45,27 +38,30 @@ const ProductForm = ({
                     </select>
 
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Valor do Emprestimo"
                         name="price"
                         value={product?.price}
                         onChange={handleInputChange}
+                        maxLength="7"
                     />
 
                     <input
-                        type="number"
+                        type="text"
                         placeholder="% de juros"
                         name="quantity"
                         value={product?.quantity}
                         onChange={handleInputChange}
+                        maxLength="2"
                     />
 
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Parcela"
                         name="parcela"
                         value={product?.parcela}
                         onChange={handleInputChange}
+                        maxLength="2"
                     />
 
                     <button type="submit" className="--btn --btns-primary-products">
