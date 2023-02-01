@@ -92,7 +92,6 @@ const ProductList = ({ products, isLoading }) => {
           </span>
         </div>
 
-        {isLoading && <SpinnerImg />}
 
         <div className="table">
           {!isLoading && products.length === 0 ? (

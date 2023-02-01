@@ -30,9 +30,9 @@ const ProductDetail = () => {
     }
   }, [isLoggedIn, isError, message, dispatch]);
 
-  if(isLoading){
-    return <SpinnerImg />
-  }
+  // if(isLoading){
+  //   return <h1>Carregando...</h1>
+  //   }
 
   if (!product){
     return <span>producto nao encontrado</span>
@@ -81,12 +81,14 @@ const ProductDetail = () => {
               }} 
             ></div>
             <hr/>
+            <div className="data">
             <p className="--color-white">
               Criado em: {new Date (product.createdAt).toLocaleString("pt-BR")}
             </p>
             <p className="--color-white">
               Ultima atualizacao: {new Date(product.updatedAt).toLocaleString("pt-BR")}
             </p>
+            </div>
           </div>
       </Card>
     </div>
