@@ -17,7 +17,7 @@ const Sidebar = ({ children }) => {
 
   return (
     <div className="layout">
-      <div className="sidebar" style={{ width: isOpen ? "230px" : "45px" }}>
+      <div className="sidebar" style={{ width: isOpen ? "170px" : "45px" }}>
         <div className="top_section">
           <div className="logo" style={{ display: isOpen ? "block" : "none" }}>
             <AiOutlineArrowLeft
@@ -29,7 +29,7 @@ const Sidebar = ({ children }) => {
 
           <div
             className="bars"
-            style={{ marginLeft: isOpen ? "160px" : "-5px" }}
+            style={{ marginLeft: isOpen ? "100px" : "-5px" }}
           >
       <HiMenuAlt3 onClick={toggle} />
           </div>

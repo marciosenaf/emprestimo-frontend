@@ -5,6 +5,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import Search from "../../search/Search";
 import { useDispatch, useSelector } from "react-redux";
+import formatcurrency from "../../../helpers/formatcurrency"
 
 import { FILTER_PRODUCTS, selectFilteredProducts, } from "../../../redux/features/product/filterSlice";
 import { deleteProduct, getProducts, } from "../../../redux/features/product/productSlice";
@@ -113,17 +114,17 @@ const ProductList = ({ products, isLoading }) => {
               <tbody>
                 {currentItems.map((product, index) => {
                   const { _id, name, category, price, quantity, parcela } = product;
-                  const valorTotal = parseFloat(price) + price * (quantity / 100)
+                  const valorTotal = parseFloat(price) + (price) * (quantity / 100)
                   const valorParcela = valorTotal / parcela
                   const lucro = valorTotal - price
                   return (
                     <tr key={_id}>
-                      <td>{shortenText(name, 16)}</td>
+                      <td>{name}</td>
                       <td>{category}</td>
-                      <td>{`R$ ${valorTotal}`}</td>
-                      <td>{`R$ ${(lucro).toFixed(2)}`}</td>
-                      <td>{`${parcela} Vezes`}</td>
-                      <td>{`R$ ${valorParcela.toFixed(2)}`}</td>
+                      <td> {formatcurrency(valorTotal)}</td>
+                      <td>{formatcurrency(lucro)}</td>
+                      <td>{`${parcela}x`}</td>
+                      <td>{formatcurrency(valorParcela)}</td>
                       <td>{new Date(product.updatedAt).toLocaleString("pt-BR")}</td>
                       <td className="icons">
                         <span>

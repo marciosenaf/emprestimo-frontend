@@ -2,6 +2,10 @@ import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./ProductForm.scss";
+import CurrencyInput from '../../Input/priceInput'
+import QuantityInput from '../../Input/quantityInput'
+import ParcelaInput from '../../Input/parcelaInput'
+
 
 const ProductForm = ({
     product,
@@ -23,7 +27,6 @@ const ProductForm = ({
                         name="name"
                         value={product?.name}
                         onChange={handleInputChange}
-                        maxLength="15"
                     />
 
                     <select
@@ -37,31 +40,28 @@ const ProductForm = ({
                         <option value="pago">pago</option>
                     </select>
 
-                    <input
+                    <CurrencyInput
                         type="text"
                         placeholder="Valor do Emprestimo"
                         name="price"
                         value={product?.price}
                         onChange={handleInputChange}
-                        maxLength="7"
                     />
 
-                    <input
+                    <QuantityInput
                         type="text"
                         placeholder="% de juros"
                         name="quantity"
                         value={product?.quantity}
                         onChange={handleInputChange}
-                        maxLength="2"
                     />
 
-                    <input
+                    <ParcelaInput
                         type="text"
                         placeholder="Parcela"
                         name="parcela"
                         value={product?.parcela}
                         onChange={handleInputChange}
-                        maxLength="2"
                     />
 
                     <button type="submit" className="--btn --btns-primary-products">

@@ -45,9 +45,9 @@ const AddProduct = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("category", category);
-    formData.append("quantity", Number(quantity));
-    formData.append("price", price);
-    formData.append("parcela", parcela);
+    formData.append("quantity", Number(quantity.replace(/[%]/g, "")));
+    formData.append("price", Number(price.replace(/[R]|[$]|[.]|/g, "")));
+    formData.append("parcela", Number(parcela.replace(/[x]/g, "")));
     formData.append("description", description);
 
     console.log(...formData);

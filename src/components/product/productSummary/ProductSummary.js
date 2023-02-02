@@ -46,13 +46,13 @@ const ProductSummary = ({ products }) => {
       <div className="info-summary">
         <InfoBox
           icon={productIcon}
-          title={"Total Emprestimo"}
+          title={"Empréstimos"}
           count={products.length}
           bgColor="card1"
         />
         <InfoBox
           icon={earningIcon}
-          title={"Value Total"}
+          title={"R$ Empréstimos"}
           count={formatCurrency(totalStoreValue)}
           bgColor="card2"
         />

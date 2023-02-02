@@ -22,7 +22,6 @@ const Header = ({ title }) => {
         <div></div>
         {!title ?
           <h3 >
-            <span className="--fw-thin">Bem vindo, </span>
             <span className="--color-blue">{name}</span>
           </h3>
 

@@ -8,6 +8,8 @@ import Card from "../../card/Card";
 import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
+import formatcurrency from "../../../helpers/formatcurrency"
+
 
 const ProductDetail = () => {
   useRedirectLoggedOutUser("/login");
@@ -35,14 +37,13 @@ const ProductDetail = () => {
   //   }
 
   if (!product){
-    return <span>producto nao encontrado</span>
+    return <span>Produto nao encontrado</span>
   }
 
   const { name, category, price, quantity, parcela } = product;
   const valorTotal = parseFloat(price) + price * (quantity / 100)
   const valorParcela = valorTotal / parcela
   const lucro = valorTotal - price
-
   return (
     <div className="product-detail" >
       <h3 className="--mt"></h3>
@@ -56,22 +57,22 @@ const ProductDetail = () => {
               <b className="--color-white">Status :</b> {product.category}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">Valor de Emprestimo :</b> {`R$ ${product.price}`}
+              <b className="--color-white">Valor de Emprestimo :</b> {formatcurrency(+price)}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">% de Lucro :</b> {`${product.quantity}%`}
+              <b className="--color-white">% de Lucro :</b> {`${(quantity)}%`}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">Valor do Lucro :</b> {`R$ ${lucro}`}
+              <b className="--color-white">Valor do Lucro :</b> {formatcurrency(+lucro)}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">Valor com juros :</b> {`${valorTotal}`}
+              <b className="--color-white">Valor com juros :</b> {formatcurrency(+valorTotal)}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">Quantidade de Parcelas :</b> {`X${product.parcela}`}
+              <b className="--color-white">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
             </p>
             <p className="--color-dark">
-              <b className="--color-white">Valor por Parcela :</b> {`R$ ${valorParcela}`}
+              <b className="--color-white">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
             </p>
 
             <hr/>
