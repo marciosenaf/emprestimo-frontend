@@ -9,6 +9,7 @@ import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
 import formatcurrency from "../../../helpers/formatcurrency"
+import ProductAddDetail from "../productAddDetail/productAddDetail"
 
 
 const ProductDetail = () => {
@@ -67,6 +68,9 @@ const ProductDetail = () => {
             </p>
             <p className="--color-dark">
               <b className="--color-white">Valor com juros :</b> {formatcurrency(+valorTotal)}
+            </p>
+            <p>
+            <ProductAddDetail/>
             </p>
             <p className="--color-dark">
               <b className="--color-white">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
