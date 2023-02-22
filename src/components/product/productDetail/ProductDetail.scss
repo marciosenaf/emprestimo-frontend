@@ -2,7 +2,9 @@
 .product-detail {
   margin-bottom: 5rem;
   display: flex;
-  justify-content:center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 
   p{
     color: #ccc;
@@ -48,3 +50,8 @@ img{
   height: 300px;
 }
 
+.color{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

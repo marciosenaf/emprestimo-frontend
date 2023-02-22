@@ -80,11 +80,7 @@ const ProductDetail = () => {
             </p>
 
             <hr/>
-            <div className="color"
-              dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(product.description),
-              }} 
-            ></div>
+
             <hr/>
             <div className="data">
             <p className="--color-white">
@@ -95,6 +91,13 @@ const ProductDetail = () => {
             </p>
             </div>
           </div>
+      </Card>
+      <Card cardClass="card">
+      <div className="color"
+              dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(product.description),
+              }} 
+            ></div>
       </Card>
     </div>
   );
