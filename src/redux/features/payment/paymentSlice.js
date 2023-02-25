@@ -19,7 +19,8 @@ export const createProduct = createAsyncThunk(
     "products/create",
     async (formData, thunkAPI) => {
         try {
-            return await productService.createProduct(formData);
+        return await productService.createProduct(formData);
+    // thunkAPI.dispatch(getProducts())
         } catch (error) {
             const message =
                 (error.response &&

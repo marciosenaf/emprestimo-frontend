@@ -39,6 +39,8 @@ const AddProduct = (product) => {
         }
         const create = await productService.createProduct(body);
         console.log(create)
+        setValor('')
+
 
         // if(create._id){
         //     updateProduct()
