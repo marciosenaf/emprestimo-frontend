@@ -19,7 +19,9 @@ export const createProduct = createAsyncThunk(
   "products/create",
   async (formData, thunkAPI) => {
     try {
-      return await productService.createProduct(formData);
+      await productService.createProduct(formData);
+      thunkAPI.dispatch(getProducts())
+      // console.log(getProducts())
     } catch (error) {
       const message =
         (error.response &&
@@ -38,7 +40,8 @@ export const getProducts = createAsyncThunk(
   "products/getAll",
   async (_,thunkAPI) => {
     try {
-      return await productService.getProducts();
+      const response = await productService.getProducts();
+      return response
     } catch (error) {
       const message =
         (error.response &&
@@ -166,7 +169,7 @@ const productSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         console.log(action.payload);
-        state.products.push(action.payload);
+        // state.products.push(action.payload);
         toast.success("Product added successfully");
       })
       .addCase(createProduct.rejected, (state, action) => {

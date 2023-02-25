@@ -8,7 +8,7 @@ import {
   createProduct,
   selectIsLoading,
 } from "../../redux/features/product/productSlice";
-
+import getProducts from "../../redux/features/product/productSlice"
 const initialState = {
   name: "",
   category: "",
@@ -50,15 +50,19 @@ const AddProduct = () => {
     formData.append("parcela", Number(parcela.replace(/[x]/g, "")));
     formData.append("description", description);
 
+    await dispatch(createProduct(formData));
+
     console.log(...formData);
 
-    await dispatch(createProduct(formData));
-    navigate(0);
+    setProduct(initialState)
+    
+    // await dispatch(getProducts());
+
   };
 
   return (
     <div>
-      <hr/>
+      <hr />
       {isLoading && <Loader />}
       <h4 className="--mt">Add Empréstimo </h4>
       <ProductForm

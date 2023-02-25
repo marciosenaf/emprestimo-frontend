@@ -46,7 +46,6 @@
 
 img{
   width: 100%;
-  margin-bottom: 10px;
   height: 300px;
 }
 
@@ -54,4 +53,9 @@ img{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.valorPayment{
+  display: flex;
+  column-gap: 6px;
 }

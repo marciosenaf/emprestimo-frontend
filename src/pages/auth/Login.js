@@ -75,7 +75,7 @@ const Login = () => {
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Senha"
               required
               name="password"
               value={password}
@@ -87,10 +87,10 @@ const Login = () => {
           </form>
           <span className={styles.login}>
           <p>
-            <Link to="/">- Home</Link>
+            <Link to="/">- Inicio</Link>
           </p>
           <p>
-          <Link className="forgotpass" to="/forgot">- Forgot Password</Link> 
+          <Link className="forgotpass" to="/forgot">- Recuperar Senha</Link> 
           </p>           
           </span>
         </div>

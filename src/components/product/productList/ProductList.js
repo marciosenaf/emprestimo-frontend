@@ -37,20 +37,22 @@ const ProductList = ({ products, isLoading }) => {
 
   const confirmDelete = (id) => {
     confirmAlert({
-      title: "Delete Product",
-      message: "Are you sure you want to delete this product.",
+      title: "Excluir",
+      message: "Tem certeza de que deseja excluir este produto.",
       buttons:
         [
           {
-            label: "Delete",
+            label: "Excluir",
             onClick: () => delProduct(id),
           },
           {
-            label: "Cancel",
+            label: "Cancelar",
           },
         ],
     });
   };
+
+
 
   //   Begin Pagination
   const [currentItems, setCurrentItems] = useState([]);
@@ -96,7 +98,7 @@ const ProductList = ({ products, isLoading }) => {
 
         <div className="table">
           {!isLoading && products.length === 0 ? (
-            <p>No product found, please add a product</p>
+            <p>Nenhum emprestimo adicionado</p>
           ) : (
             <table>
               <thead>
@@ -112,7 +114,7 @@ const ProductList = ({ products, isLoading }) => {
               </thead>
 
               <tbody>
-                {currentItems.map((product, index) => {
+                {currentItems.map((product) => {
                   const { _id, name, category, price, quantity, parcela } = product;
                   const valorTotal = parseFloat(price) + (price) * (quantity / 100)
                   const valorParcela = valorTotal / parcela

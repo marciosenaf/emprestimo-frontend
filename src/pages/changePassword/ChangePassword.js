@@ -46,7 +46,7 @@ const ChangePassword = () => {
         <form onSubmit={changePass} className="--form-control">
           <input
             type="password"
-            placeholder="Old Password"
+            placeholder="Senha antiga"
             required
             name="oldPassword"
             value={oldPassword}
@@ -54,7 +54,7 @@ const ChangePassword = () => {
           />
           <input
             type="password"
-            placeholder="New Password"
+            placeholder="Nova Senha"
             required
             name="password"
             value={password}
@@ -62,14 +62,14 @@ const ChangePassword = () => {
           />
           <input
             type="password"
-            placeholder="Confirm New Password"
+            placeholder="Confirmar Nova Senha"
             required
             name="password2"
             value={password2}
             onChange={handleInputChange}
           />
           <button type="submit" className="--btn seubotao">
-            Change Password
+            Entrar
           </button>
         </form>
       </Card>

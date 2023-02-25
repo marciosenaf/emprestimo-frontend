@@ -9,7 +9,9 @@ import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
 import formatcurrency from "../../../helpers/formatcurrency"
-import ProductAddDetail from "../productAddDetail/productAddDetail"
+import ProductAddDetail from "../../payment/productAddDetail/productAddDetail"
+import AddPayment from "../../../pages/add/AddPayment"
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 
 const ProductDetail = () => {
@@ -37,8 +39,12 @@ const ProductDetail = () => {
   //   return <h1>Carregando...</h1>
   //   }
 
-  if (!product){
+  if (!product) {
     return <span>Produto nao encontrado</span>
+  }
+
+  const updateProduct = () => {
+    dispatch(getProduct(id));
   }
 
   const { name, category, price, quantity, parcela } = product;
@@ -49,55 +55,64 @@ const ProductDetail = () => {
     <div className="product-detail" >
       <h3 className="--mt"></h3>
       <Card cardClass="card">
-          <div className="detail" >
-            <h1/>
-            <h4 className="--color-white">
-              <span className="badge">Name:</span> &nbsp; {product.name}
-            </h4>
-            <p className="--color-dark">
-              <b className="--color-white">Status :</b> {product.category}
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">Valor de Emprestimo :</b> {formatcurrency(+price)}
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">% de Lucro :</b> {`${(quantity)}%`}
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">Valor do Lucro :</b> {formatcurrency(+lucro)}
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">Valor com juros :</b> {formatcurrency(+valorTotal)}
-            </p>
-            <p>
-            <ProductAddDetail/>
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
-            </p>
-            <p className="--color-dark">
-              <b className="--color-white">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
-            </p>
+        <div className="detail" >
+          <h1 />
+          <h4 className="--color-white">
+            <span className="badge">Name:</span> &nbsp; {product.name}
+          </h4>
+          <p className="--color-dark">
+            <b className="--color-white">Status :</b> {product.category}
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">Valor de Emprestimo :</b> {formatcurrency(+price)}
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">% de Lucro :</b> {`${(quantity)}%`}
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">Valor do Lucro :</b> {formatcurrency(+lucro)}
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">Valor com juros :</b> {formatcurrency(+valorTotal)}
+          </p>
+          <p>
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
+          </p>
+          <p className="--color-dark">
+            <b className="--color-white">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
+          </p>
 
-            <hr/>
+          <AddPayment product={product._id} updateProduct={updateProduct} />
+          {product.payments.map((pay, index) => (
+            <p className="--color-dark" key={pay._id}>
+            <b className="valorPayment">
+              <b className="--color-success"> {index + 1} - Pagou {formatcurrency(pay.valor)} </b> 
+              {new Date(pay.updatedAt).toLocaleString("pt-BR")} 
+              <FaTrashAlt size={15} color={"red"} />
+              </b>
+            </p>
+          ))}
+          <div className="data">
+            <h4 className="--color-white">Detalhe</h4>
+            <p className="--color-white">
+              <b className="--color-white"> Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
+            </p>
+            <p className="--color-white">
+              <b className="--color-white">Ultima atualizacao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
+            </p>
+            <br />
 
-            <hr/>
-            <div className="data">
-            <p className="--color-white">
-              Criado em: {new Date (product.createdAt).toLocaleString("pt-BR")}
-            </p>
-            <p className="--color-white">
-              Ultima atualizacao: {new Date(product.updatedAt).toLocaleString("pt-BR")}
-            </p>
-            </div>
           </div>
+        </div>
       </Card>
       <Card cardClass="card">
-      <div className="color"
-              dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(product.description),
-              }} 
-            ></div>
+        <div className="color"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(product.description),
+          }}
+        ></div>
       </Card>
     </div>
   );

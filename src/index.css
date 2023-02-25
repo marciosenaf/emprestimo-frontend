@@ -491,7 +491,8 @@ a:hover {
 }
 
 .ql-editor {
-  min-height: 200px;
+  min-height: 257px;
+  max-height: 257px;
 }
 
 .pagination {

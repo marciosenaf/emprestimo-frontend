@@ -32,7 +32,7 @@ const Header = ({ title }) => {
         }
 
         <button onClick={logout} className="button123">
-          Logout
+          Sair
         </button>
       </div>
       <hr />

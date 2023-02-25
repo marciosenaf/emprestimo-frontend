@@ -24,7 +24,7 @@ const Home = () => {
             <div className="hero-buttons">
               <Link to="/inventory">
                 <button className="--btn botao-home">
-                  Enter
+                  Entrar
                 </button>
                 </Link>
                 

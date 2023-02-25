@@ -52,12 +52,12 @@ const Reset = () => {
           <div className="--flex-center">
             <MdPassword size={35} color="#999" />
           </div>
-          <h2>Reset Password</h2>
+          <h2>Resetar Senha</h2>
 
           <form onSubmit={reset}>
             <input
               type="password"
-              placeholder="New Password"
+              placeholder="Nova Senha"
               required
               name="password"
               value={password}
@@ -65,7 +65,7 @@ const Reset = () => {
             />
             <input
               type="password"
-              placeholder="Confirm New Password"
+              placeholder="Confirmar Nova Senha"
               required
               name="password2"
               value={password2}
@@ -73,11 +73,11 @@ const Reset = () => {
             />
 
             <button type="submit" className="--btn --btn-primary --btn-block">
-              Reset Password
+              Resetar Senha
             </button>
             <div className={styles.links}>
               <p>
-                <Link to="/">- Home</Link>
+                <Link to="/">- Inicio</Link>
               </p>
               <p>
                 <Link to="/login">- Login</Link>

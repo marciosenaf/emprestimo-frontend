@@ -34,7 +34,7 @@ const Forgot = () => {
           <div className="--flex-center">
             <AiOutlineMail size={35} color="#999" />
           </div>
-          <h2>Forgot Password</h2>
+          <h2>Recuperar Senha</h2>
 
           <form onSubmit={forgot}>
             <input
@@ -47,11 +47,11 @@ const Forgot = () => {
             />
 
             <button type="submit" className="--btn --btn-primary --btn-block">
-              Get Reset Email
+              Enviar
             </button>
             <div className={styles.links}>
               <p>
-                <Link to="/">- Home</Link>
+                <Link to="/">- inicio</Link>
               </p>
               <p>
                 <Link to="/login">- Login</Link>
