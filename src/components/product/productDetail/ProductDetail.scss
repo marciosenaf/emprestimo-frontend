@@ -59,3 +59,15 @@ img{
   display: flex;
   column-gap: 6px;
 }
+
+.icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  > * {
+    margin-right: 7px;
+    cursor: pointer;
+    vertical-align: middle;
+    align-self: center;
+  }
+}

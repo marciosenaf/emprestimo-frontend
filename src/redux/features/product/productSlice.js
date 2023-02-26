@@ -158,6 +158,22 @@ const productSlice = createSlice({
       });
       state.category = uniqueCategory;
     },
+    addNewPayment(state, { payload }) {
+      state.product = {
+        ...state.product,
+        payments: [
+          ...state.product.payments,
+          payload
+        ]
+      };
+    },
+    removePayment(state, { payload }) {
+      const payments = state.product.payments ? state.product.payments.filter((p) => p._id !== payload) : []
+      state.product = {
+        ...state.product,
+        payments
+      };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -242,7 +258,7 @@ const productSlice = createSlice({
   },
 });
 
-export const { CALC_STORE_VALUE, CALC_OUTOFSTOCK, CALC_CATEGORY } =
+export const { CALC_STORE_VALUE, CALC_OUTOFSTOCK, CALC_CATEGORY, addNewPayment, removePayment } =
   productSlice.actions;
 
 export const selectIsLoading = (state) => state.product.isLoading;

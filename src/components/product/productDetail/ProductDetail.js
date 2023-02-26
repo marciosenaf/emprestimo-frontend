@@ -3,20 +3,47 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 import { selectIsLoggedIn } from "../../../redux/features/auth/authSlice";
-import { getProduct } from "../../../redux/features/product/productSlice";
+import { getProduct, removePayment } from "../../../redux/features/product/productSlice";
 import Card from "../../card/Card";
 import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
 import formatcurrency from "../../../helpers/formatcurrency"
-import ProductAddDetail from "../../payment/productAddDetail/productAddDetail"
 import AddPayment from "../../../pages/add/AddPayment"
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { deleteProduct, getProducts, } from "../../../redux/features/payment/paymentSlice";
 
 
 const ProductDetail = () => {
   useRedirectLoggedOutUser("/login");
+
   const dispatch = useDispatch();
+
+  const delProduct = async (id) => {
+    console.log(id);
+    await dispatch(deleteProduct(id));
+    await dispatch(getProducts());
+    dispatch(removePayment(id))
+  };
+
+  const confirmDelete = (id) => {
+    confirmAlert({
+      title: "Excluir",
+      message: "Tem certeza de que deseja excluir este produto.",
+      buttons:
+        [
+          {
+            label: "Excluir",
+            onClick: () => delProduct(id),
+          },
+          {
+            label: "Cancelar",
+          },
+        ],
+    });
+  };
 
   const { id } = useParams();
 
@@ -84,13 +111,15 @@ const ProductDetail = () => {
             <b className="--color-white">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
           </p>
 
-          <AddPayment product={product._id} updateProduct={updateProduct} />
+          <AddPayment product={product._id} />
           {product.payments.map((pay, index) => (
             <p className="--color-dark" key={pay._id}>
-            <b className="valorPayment">
-              <b className="--color-success"> {index + 1} - Pagou {formatcurrency(pay.valor)} </b> 
-              {new Date(pay.updatedAt).toLocaleString("pt-BR")} 
-              <FaTrashAlt size={15} color={"red"} />
+              <b className="valorPayment">
+                <b className="--color-success">
+                  {index + 1} - Pagou {formatcurrency(pay.valor)}
+                </b>
+                {new Date(pay.updatedAt).toLocaleString("pt-BR")}
+                <b className="icons"><FaTrashAlt size={15} color={"red"} onClick={() => confirmDelete(pay._id)} /></b>
               </b>
             </p>
           ))}

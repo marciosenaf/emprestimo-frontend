@@ -12,6 +12,7 @@ import {
   selectProduct,
   updateProduct,
 } from "../../redux/features/product/productSlice";
+import Card from "../../components/card/Card";
 
 const EditProduct = () => {
   useRedirectLoggedOutUser("/login");
@@ -78,6 +79,7 @@ const EditProduct = () => {
       {isLoading && <Loader />}
       <h3 className="--mt"></h3>
       <div className="edit">
+      <Card cardClass="card">
       <ProductForm
         product={product}
         productImage={productImage}
@@ -88,6 +90,8 @@ const EditProduct = () => {
         handleImageChange={handleImageChange}
         saveProduct={saveProduct}
       />
+      </Card>
+
       </div>
     </div>
   );

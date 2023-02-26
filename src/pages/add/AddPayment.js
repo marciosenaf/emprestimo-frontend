@@ -1,12 +1,11 @@
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
 import ProductAddDetail from "../../components/payment/productAddDetail/productAddDetail";
-import {
-    selectIsLoading,
-} from "../../redux/features/payment/paymentSlice";
+import { selectIsLoading, createProduct } from "../../redux/features/payment/paymentSlice";
+import { addNewPayment } from "../../redux/features/product/productSlice";
 import productService from "../../redux/features/payment/paymentService";
 import getProducts from "../../redux/features/payment/paymentSlice"
 
@@ -15,6 +14,7 @@ import getProducts from "../../redux/features/payment/paymentSlice"
 const AddProduct = (product) => {
     useRedirectLoggedOutUser("/login");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [valor, setValor] = useState('');
     const [productImage, setProductImage] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
@@ -37,22 +37,17 @@ const AddProduct = (product) => {
             product_id: product.product,
             valor
         }
+
         const create = await productService.createProduct(body);
-        console.log(create)
+        dispatch(addNewPayment(create))
         setValor('')
-
-
-        // if(create._id){
-        //     updateProduct()
-        // }
-        // navigate(0);
     };
 
     return (
         <div>
             {isLoading && <Loader />}
             <ProductAddDetail
-                product={ { valor }}
+                product={{ valor }}
                 productImage={productImage}
                 imagePreview={imagePreview}
                 description={description}
