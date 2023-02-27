@@ -16,7 +16,7 @@ const Home = () => {
           <h2>Controle {"&"} Sistema de empréstimo monetário</h2>
           <p>
           Sistema de empréstimo para controlar
-          e gerir os empréstimo finaceiro em tempo
+          e gerir os empréstimo financeiro em tempo
           real e integrado para facilitar o
           desenvolvimento do seu negócio.
           </p>

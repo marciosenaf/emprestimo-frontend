@@ -70,6 +70,8 @@ const ProductDetail = () => {
     return <span>Produto nao encontrado</span>
   }
 
+
+
   const updateProduct = () => {
     dispatch(getProduct(id));
   }
@@ -78,6 +80,12 @@ const ProductDetail = () => {
   const valorTotal = parseFloat(price) + price * (quantity / 100)
   const valorParcela = valorTotal / parcela
   const lucro = valorTotal - price
+  const stockStatus = (category) => {
+    if (category === "pago") {
+      return <b className="--color-success">Pago</b>;
+    }
+    return <b className="--color-danger">Pendente</b>;
+  };
   return (
     <div className="product-detail" >
       <h3 className="--mt"></h3>
@@ -88,7 +96,7 @@ const ProductDetail = () => {
             <span className="badge">Name:</span> &nbsp; {product.name}
           </h4>
           <p className="--color-dark">
-            <b className="--color-white">Status :</b> {product.category}
+            <b className="--color-white">Status :</b> {stockStatus(product.category)}
           </p>
           <p className="--color-dark">
             <b className="--color-white">Valor de Emprestimo :</b> {formatcurrency(+price)}
@@ -116,7 +124,7 @@ const ProductDetail = () => {
             <p className="--color-dark" key={pay._id}>
               <b className="valorPayment">
                 <b className="--color-success">
-                  {index + 1} - Pagou {formatcurrency(pay.valor)}
+                  {index + 1} - Pagou {pay.valor}
                 </b>
                 {new Date(pay.updatedAt).toLocaleString("pt-BR")}
                 <b className="icons"><FaTrashAlt size={15} color={"red"} onClick={() => confirmDelete(pay._id)} /></b>
@@ -126,7 +134,7 @@ const ProductDetail = () => {
           <div className="data">
             <h4 className="--color-white">Detalhe</h4>
             <p className="--color-white">
-              <b className="--color-white"> Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
+              <b className="--color-white">Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
             </p>
             <p className="--color-white">
               <b className="--color-white">Ultima atualizacao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
@@ -145,6 +153,7 @@ const ProductDetail = () => {
       </Card>
     </div>
   );
+  
 };
 
 export default ProductDetail;

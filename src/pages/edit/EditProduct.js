@@ -79,18 +79,18 @@ const EditProduct = () => {
       {isLoading && <Loader />}
       <h3 className="--mt"></h3>
       <div className="edit">
-      <Card cardClass="card">
-      <ProductForm
-        product={product}
-        productImage={productImage}
-        imagePreview={imagePreview}
-        description={description}
-        setDescription={setDescription}
-        handleInputChange={handleInputChange}
-        handleImageChange={handleImageChange}
-        saveProduct={saveProduct}
-      />
-      </Card>
+        <Card cardClass="card">
+          <ProductForm
+            product={product}
+            productImage={productImage}
+            imagePreview={imagePreview}
+            description={description}
+            setDescription={setDescription}
+            handleInputChange={handleInputChange}
+            handleImageChange={handleImageChange}
+            saveProduct={saveProduct}
+          />
+        </Card>
 
       </div>
     </div>

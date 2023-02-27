@@ -1,6 +1,18 @@
 .edit{
-    margin-left: 10rem;
+    // margin-left: 10rem;
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     padding: 5rem 0rem 25px 1rem;
+    justify-content: space-evenly;
 }
+
+.add-product form {
+    display: flex;
+    justify-content: center;}
+
+    .add-product {
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+    }
+
+

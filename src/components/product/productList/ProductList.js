@@ -21,14 +21,6 @@ const ProductList = ({ products, isLoading }) => {
 
   const dispatch = useDispatch();
 
-  const shortenText = (text, n) => {
-    if (text?.length > n) {
-      const shortenedText = text.substring(0, n).concat("...");
-      return shortenedText;
-    }
-    return text;
-  };
-
   const delProduct = async (id) => {
     console.log(id);
     await dispatch(deleteProduct(id));

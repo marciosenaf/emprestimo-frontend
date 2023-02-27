@@ -5,7 +5,7 @@ import "./ProductForm.scss";
 import CurrencyInput from '../../Input/priceInput'
 import QuantityInput from '../../Input/quantityInput'
 import ParcelaInput from '../../Input/parcelaInput'
-
+import { useLocation } from "react-router-dom";
 
 const ProductForm = ({
     product,
@@ -16,10 +16,13 @@ const ProductForm = ({
     handleInputChange,
     handleImageChange,
     saveProduct,
-}) => {
+}) => { 
+    const Location = useLocation()
+    const carlin = Location?.pathname?.split("/")[1] === "edit-product"
+
     return (
         <div className="add-product">
-            <form onSubmit={saveProduct}>
+            <form style={{justifyContent : carlin ? "center" : "left"}} onSubmit={saveProduct}>
                 <div className="inputs">
                     <input
                         type="text"
@@ -27,6 +30,7 @@ const ProductForm = ({
                         name="name"
                         value={product?.name}
                         onChange={handleInputChange}
+                        maxLength={20}
                     />
 
                     <select
