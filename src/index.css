@@ -243,6 +243,11 @@ p {
   margin-bottom: 2rem;
 }
 
+@media screen and (max-width: 882px) {
+  .--mt {
+    display: none;
+  }
+}
 .--my {
   margin: 1rem 0;
 }
@@ -527,4 +532,5 @@ a:hover {
   background-color: var(--dark-blue);
   height: 100%;
 }
+
 

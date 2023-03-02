@@ -13,7 +13,7 @@ import AddPayment from "../../../pages/add/AddPayment"
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import { deleteProduct, getProducts, } from "../../../redux/features/payment/paymentSlice";
+import { deleteProduct, getProducts } from "../../../redux/features/payment/paymentSlice";
 
 
 const ProductDetail = () => {
@@ -23,8 +23,8 @@ const ProductDetail = () => {
 
   const delProduct = async (id) => {
     console.log(id);
-    await dispatch(deleteProduct(id));
-    await dispatch(getProducts());
+    dispatch(deleteProduct(id));
+    dispatch(getProducts());
     dispatch(removePayment(id))
   };
 
@@ -45,6 +45,8 @@ const ProductDetail = () => {
     });
   };
 
+
+
   const { id } = useParams();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -62,20 +64,19 @@ const ProductDetail = () => {
     }
   }, [isLoggedIn, isError, message, dispatch]);
 
-  // if(isLoading){
-  //   return <h1>Carregando...</h1>
-  //   }
 
   if (!product) {
     return <span>Produto nao encontrado</span>
   }
 
-
-
-  const updateProduct = () => {
-    dispatch(getProduct(id));
+  const id_tmp = localStorage.getItem("id");
+  const data = product.payments.filter(r => r.user == id_tmp)
+  const result = {
+    "residualAmount": data.reduce((a, b) =>
+      a + Number(b.valor), 0
+    ),
+    "statement": data
   }
-
   const { name, category, price, quantity, parcela } = product;
   const valorTotal = parseFloat(price) + price * (quantity / 100)
   const valorParcela = valorTotal / parcela
@@ -86,58 +87,71 @@ const ProductDetail = () => {
     }
     return <b className="--color-danger">Pendente</b>;
   };
+
+  const valueTotal = product.payments.map(({ valor }) => parseFloat(valor)).reduce((acc, currentValue) => acc + currentValue, 0)
+  
+  let valorPagoProg = parseFloat(valorTotal)
+
   return (
     <div className="product-detail" >
       <h3 className="--mt"></h3>
       <Card cardClass="card">
         <div className="detail" >
           <h1 />
-          <h4 className="--color-white">
-            <span className="badge">Name:</span> &nbsp; {product.name}
+          <h4 className="--color-white ">
+            <span className="badge" >Name:</span> &nbsp; {product.name}
           </h4>
-          <p className="--color-dark">
-            <b className="--color-white">Status :</b> {stockStatus(product.category)}
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">Status :</b> {stockStatus(product.category)}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">Valor de Emprestimo :</b> {formatcurrency(+price)}
+          <p className="--color-dark p_detail" >
+            <b className="--color-white b_detail">Valor de Emprestimo :</b> {formatcurrency(+price)}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">% de Lucro :</b> {`${(quantity)}%`}
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">% de Lucro :</b> {`${(quantity)}%`}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">Valor do Lucro :</b> {formatcurrency(+lucro)}
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">Valor do Lucro :</b> {formatcurrency(+lucro)}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">Valor com juros :</b> {formatcurrency(+valorTotal)}
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">Valor com juros :</b> {formatcurrency(+valorTotal)}
           </p>
-          <p>
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">Quantidade de Parcelas :</b> {` ${product.parcela}x`}
+          <p className="--color-dark p_detail">
+            <b className="--color-white b_detail">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
           </p>
-          <p className="--color-dark">
-            <b className="--color-white">Valor por Parcela :</b> {formatcurrency(+valorParcela)}
-          </p>
-
           <AddPayment product={product._id} />
-          {product.payments.map((pay, index) => (
-            <p className="--color-dark" key={pay._id}>
-              <b className="valorPayment">
-                <b className="--color-success">
-                  {index + 1} - Pagou {pay.valor}
+          {
+            product.payments.map((pay, index) => {
+              valorPagoProg -= parseFloat(pay.valor)
+              return (
+              <p className="--color-dark p_detail" key={pay._id}>
+                <b className="valorPayment b_detail">
+                  {index + 1}
+                  <b className="--color-success b_detail">
+                    {formatcurrency(+pay.valor)}
+                  </b>
+                  falta
+                  <b className="--color-danger b_detail">
+                    {formatcurrency(parseFloat(valorPagoProg))}
+                  </b>
+                  <b className="icons b_detail">
+                    <FaTrashAlt className="delete_detail" onClick={() => confirmDelete(pay._id)} />
+                  </b>
                 </b>
-                {new Date(pay.updatedAt).toLocaleString("pt-BR")}
-                <b className="icons"><FaTrashAlt size={15} color={"red"} onClick={() => confirmDelete(pay._id)} /></b>
-              </b>
-            </p>
-          ))}
+                <span className="dateDetail">{new Date(pay.updatedAt).toLocaleString("pt-BR")}</span>
+              </p>
+            )})}
+            {}
           <div className="data">
             <h4 className="--color-white">Detalhe</h4>
-            <p className="--color-white">
-              <b className="--color-white">Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
+            <p className="--color-white p_detail">
+              <b className="--color-white b_detail">Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
             </p>
-            <p className="--color-white">
-              <b className="--color-white">Ultima atualizacao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
+            <p className="--color-white p_detail">
+              <b className="--color-white b_detail">Ultima atualizacao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
             </p>
             <br />
 
@@ -153,7 +167,7 @@ const ProductDetail = () => {
       </Card>
     </div>
   );
-  
+
 };
 
 export default ProductDetail;

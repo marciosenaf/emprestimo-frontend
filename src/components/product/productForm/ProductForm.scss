@@ -26,6 +26,7 @@ margin-left: 10px;
       font-weight: 500;
       color: white;
     }
+    
     input,
     input[type="text"],
     input[type="number"],
@@ -54,26 +55,6 @@ margin-left: 10px;
   border-radius: 5px;
 }
 
-.imagefile{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.image-preview {
-  width: 55%;
-  height: 55%;
-  max-width: 420px;
-  max-height: 230px;
-  border-radius: 1px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-
-.image-preview img {
-  width: 100%;
-}
-
 .image-show {
   display: block;
 }
@@ -85,31 +66,13 @@ border: 1px solid #777;
 border-radius: 4px;
 }
 
-input[type="file"] {
-  display: none;
-}
-.noimage{
-  color: #333;
-  margin-top: 10rem;
-  font-size:12px;
-
+@media screen and (max-width: 959px) {
+  .editor {
+    max-width: 485px;
+  }
 }
 
-.image{
-  padding: 10px 10px;
-  width: 100%;
-  background: var(--dark-blue);
-  color: #ccc;
-  display: block;
-  margin-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-}
 
-.image:hover{
-color: #333;
-background: #fff;
-}
 
 
 .--btns-primary-products{
@@ -125,4 +88,11 @@ background: #fff;
   color: var(--dark-blue);
   background-color:#fff;
   font-size: 15px;
+}
+
+@media screen and (max-width: 700px) {
+  .ql-toolbar  {
+    display: none;
+  }
+
 }

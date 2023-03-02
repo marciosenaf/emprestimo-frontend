@@ -18,10 +18,10 @@ import {
 import formatCurrency from "../../../helpers/formatcurrency";
 
 // Icons
-const earningIcon = <AiFillDollarCircle size={40} color="#fff" />;
-const productIcon = <BsPeopleFill size={40} color="#fff" />;
-const categoryIcon = <SiVerizon size={40} color="#fff" />;
-const outOfStockIcon = <RiQuestionMark size={40} color="#fff" />;
+const earningIcon = <AiFillDollarCircle size={30} color="#fff" />;
+const productIcon = <BsPeopleFill size={30} color="#fff" />;
+const categoryIcon = <SiVerizon size={30} color="#fff" />;
+const outOfStockIcon = <RiQuestionMark size={30} color="#fff" />;
 
 // Format Amount
 export const formatNumbers = (x) => {

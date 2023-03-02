@@ -12,6 +12,7 @@
       width: 100%;
       max-width: 300px;
     }
+  
 
     table {
       border-collapse: collapse;
@@ -59,5 +60,10 @@
         }
       }
     }
+  }
+}
+@media screen and (max-width: 1032px) {
+ .th_list {
+      font-size: 11px;
   }
 }

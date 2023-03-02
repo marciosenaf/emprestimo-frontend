@@ -1,4 +1,4 @@
-.edit{
+.edit {
     // margin-left: 10rem;
     display: flex;
     // justify-content: space-around;
@@ -8,11 +8,16 @@
 
 .add-product form {
     display: flex;
-    justify-content: center;}
+    justify-content: center;
+}
 
-    .add-product {
-        margin-bottom: 3rem;
-        margin-top: 3rem;
+.add-product {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 959px) {
+    .add-product form {
+        justify-content: center;
     }
-
-
+}

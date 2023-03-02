@@ -45,7 +45,7 @@ function App() {
           path="/change-password"
           element={
             <Sidebar>
-              <Layout title="Alterar a senha">
+              <Layout title="Senha">
                 <ChangePassword />
               </Layout>
             </Sidebar>
@@ -77,7 +77,7 @@ function App() {
           path="/edit-product/:id"
           element={
             <Sidebar>
-              <Layout title="Edit Product">
+              <Layout title="Editar">
                 <EditProduct />
               </Layout>
             </Sidebar>

@@ -16,6 +16,7 @@ main {
   overflow: auto;
   color: var(-color-dark);
   transition: all 0.5s;
+  z-index: 1;
 }
 
 .top_section {
@@ -139,4 +140,11 @@ a {
 
 .sublink .sidebar-item .sidebar-title {
   padding-left: 40px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .main {
+    padding-left: none;
+  }
 }

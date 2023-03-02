@@ -19,8 +19,8 @@ export const createProduct = createAsyncThunk(
     "products/create",
     async (formData, thunkAPI) => {
         try {
-        return await productService.createProduct(formData);
-    // thunkAPI.dispatch(getProducts())
+            await productService.createProduct(formData);
+            thunkAPI.dispatch(getProducts())
         } catch (error) {
             const message =
                 (error.response &&
@@ -127,9 +127,8 @@ const productSlice = createSlice({
             //terceiro card
             const products = action.payload;
             const array = [];
-            products.map((item) => {
+            products.payments.map((item) => {
                 const { category } = item;
-
                 return array.push(category);
             });
             let count = 0;
@@ -156,6 +155,7 @@ const productSlice = createSlice({
             });
             state.category = uniqueCategory;
         },
+        
     },
     extraReducers: (builder) => {
         builder

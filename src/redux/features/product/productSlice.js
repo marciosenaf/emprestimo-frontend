@@ -158,6 +158,9 @@ const productSlice = createSlice({
       });
       state.category = uniqueCategory;
     },
+
+    //rendering to add New Payment
+
     addNewPayment(state, { payload }) {
       state.product = {
         ...state.product,
@@ -167,6 +170,9 @@ const productSlice = createSlice({
         ]
       };
     },
+
+        //rendering when deleting payment
+        
     removePayment(state, { payload }) {
       const payments = state.product.payments ? state.product.payments.filter((p) => p._id !== payload) : []
       state.product = {

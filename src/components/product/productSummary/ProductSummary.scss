@@ -1,28 +1,47 @@
 .product-summary {
-  width: 100%;
+  width: 105%;
+
   .info-summary {
     margin-left: 10px;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 16px;
   }
 }
 
 .card {
   border: 3px solid black;
-  // border-bottom: 3px solid var(--light-blue);
   padding: 5px;
-  background-color:var(--dark-blue);
+  background-color: var(--dark-blue);
 }
 
 .card1 {
   background-color: #b624ff;
 }
+
 .card2 {
   background-color: #32963d;
 }
+
 .card3 {
   background-color: #c41849;
 }
+
 .card4 {
   background-color: #03a5fc;
+}
+
+@media only screen and (max-width:882px) {
+
+  .info-summary {
+    justify-content: center;
+  }
+
+}
+@media only screen and (max-width:882px) {
+
+  .info-summary {
+    margin-top: 16px;
+    }
+
 }

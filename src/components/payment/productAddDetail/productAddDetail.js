@@ -1,10 +1,10 @@
 import React from 'react'
 import "../productAddDetail/productAddDetail.scss"
-import CurrencyInput from '../../Input/priceInput'
-
+import { NumberFormatBase } from 'react-number-format';
 
 const ProductAddDetail = ({
     product,
+    productValor,
     productImage,
     imagePreview,
     description,
@@ -13,16 +13,30 @@ const ProductAddDetail = ({
     handleImageChange,
     saveProduct,
 }) => {
+    function currencyFormatter(value) {
+        if (!Number(value)) return "";
+
+        const amount = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(value / 100);
+
+        return `${amount}`;
+    }
+
     return (
         <div>
-            <CurrencyInput
-                type="text"
+            <NumberFormatBase
+                prefix={'R$ '}
+                displayType="input"
+                value={productValor}
+                onValueChange={(values) => {
+                    handleInputChange(values.formattedValue);
+                }}
                 placeholder="Valor Pago"
                 className='inputDetail'
-                name="valor"
-                value={product?.valor}
-                onChange={handleInputChange}
-                />
+                format={currencyFormatter}
+            />
             <button className="--btn botaoInput" onClick={() => saveProduct()}>Salvar</button>
         </div>
     )

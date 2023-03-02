@@ -43,6 +43,10 @@
   background-color:var(--dark-blue);
 }
 
+.delete_detail{
+  size: 17;
+  color: red;
+}
 
 img{
   width: 100%;
@@ -70,4 +74,23 @@ img{
     vertical-align: middle;
     align-self: center;
   }
+}
+
+.dateDetail{
+  vertical-align: -3px;
+    font-size: 0.7em;
+}
+
+@media screen and (max-width: 600px) {
+  .b_detail {
+    font-size: 10px;
+  }
+ .p_detail {
+    font-size: 10px;
+  }
+
+  .delete_detail{
+    size: 13 ;
+  }
+  
 }

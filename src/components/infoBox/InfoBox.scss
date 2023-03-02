@@ -41,8 +41,11 @@ max-width: 247.5px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .info-box {
-    max-width: 100%;
+@media only screen and (max-width:400px) {
+  .info-text > * {
+    color: #fff;
+    margin-bottom: 6px;
+    font-size: 13px;
   }
+
 }

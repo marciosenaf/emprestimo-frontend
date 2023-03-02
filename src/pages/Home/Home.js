@@ -13,8 +13,8 @@ const Home = () => {
       </nav>
       <section className="container hero">
         <div className="hero-text">
-          <h2>Controle {"&"} Sistema de empréstimo monetário</h2>
-          <p>
+          <h2 className="title__home">Controle {"&"} Sistema de empréstimo monetário</h2>
+          <p className="description__home">
           Sistema de empréstimo para controlar
           e gerir os empréstimo financeiro em tempo
           real e integrado para facilitar o

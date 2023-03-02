@@ -95,13 +95,13 @@ const ProductList = ({ products, isLoading }) => {
             <table>
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Status</th>
-                  <th>Valor Total</th>
-                  <th>Lucro</th>
-                  <th>Parcela</th>
-                  <th>Val Parcela</th>
-                  <th>Ultima Ação</th>
+                  <th className="th_list" >Nome</th>
+                  <th className="th_list" >Status</th>
+                  <th className="th_list" >Valor Total</th>
+                  <th className="th_list" >Lucro</th>
+                  <th className="th_list" >Parcela</th>
+                  <th className="th_list" >Val Parcela</th>
+                  <th className="th_list" >Ultima Ação</th>
                 </tr>
               </thead>
 

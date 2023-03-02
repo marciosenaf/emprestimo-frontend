@@ -1,6 +1,6 @@
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import React, { useState } from "react";
-import {useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
 import ProductAddDetail from "../../components/payment/productAddDetail/productAddDetail";
@@ -19,11 +19,9 @@ const AddProduct = (product) => {
     const [productImage, setProductImage] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
     const [description, setDescription] = useState("");
-
     const isLoading = useSelector(selectIsLoading);
 
-    const handleInputChange = (e) => {
-        const { value } = e.target;
+    const handleInputChange = (value) => {
         setValor(value)
     };
 
@@ -32,10 +30,16 @@ const AddProduct = (product) => {
         setImagePreview(URL.createObjectURL(e.target.files[0]));
     };
 
+    const formatMoneyNumber = (value) => {
+        const format = value.replace('R$', '').replace('.', '').replace(',', '.')
+
+        return parseFloat(format)
+    }
+
     const saveProduct = async () => {
         const body = {
             product_id: product.product,
-            valor
+            valor: formatMoneyNumber(valor)
         }
 
         const create = await productService.createProduct(body);
@@ -47,7 +51,7 @@ const AddProduct = (product) => {
         <div>
             {isLoading && <Loader />}
             <ProductAddDetail
-                product={{ valor }}
+                productValor={valor}
                 productImage={productImage}
                 imagePreview={imagePreview}
                 description={description}

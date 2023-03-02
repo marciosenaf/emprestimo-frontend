@@ -23,6 +23,16 @@ const ProductForm = ({
     return (
         <div className="add-product">
             <form style={{justifyContent : carlin ? "center" : "left"}} onSubmit={saveProduct}>
+            <div className="editor">
+                    <ReactQuill
+                        placeholder="Insira os dados do cliente aqui"
+                        theme="snow"
+                        value={description}
+                        onChange={setDescription}
+                        modules={ProductForm.modules}
+                        formats={ProductForm.formats}
+                    />
+                </div>
                 <div className="inputs">
                     <input
                         type="text"
@@ -72,19 +82,6 @@ const ProductForm = ({
                         Salvar
                     </button>
                 </div>
-
-                <div className="editor">
-                    <ReactQuill
-                        placeholder="Insira os dados do cliente aqui"
-                        theme="snow"
-                        value={description}
-                        onChange={setDescription}
-                        modules={ProductForm.modules}
-                        formats={ProductForm.formats}
-                    />
-                </div>
-
-
             </form>
 
         </div>
