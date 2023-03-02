@@ -5,6 +5,8 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import menu from "../../data/sidebar";
 import SidebarItem from "./SidebarItem";
 import { useNavigate } from "react-router-dom";
+import {GiMoneyStack} from "react-icons/gi"
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -17,22 +19,27 @@ const Sidebar = ({ children }) => {
 
   return (
     <div className="layout">
-      <div className="sidebar" style={{ width: isOpen ? "170px" : "45px" }}>
+      <div className="sidebar" style={{ width: "40px" }}>
         <div className="top_section">
           <div className="logo" style={{ display: isOpen ? "block" : "none" }}>
-            <AiOutlineArrowLeft
+            {/* <Link >
+            <GiMoneyStack
               size={25}
               style={{ cursor: "pointer" }}
-              onClick={goHome}
             />
+          </Link> */}
           </div>
 
+          <Link to="/inventory">
           <div
             className="bars"
-            style={{ marginLeft: isOpen ? "100px" : "-5px" }}
+            style={{ marginLeft: "-5px" }}
           >
-      <HiMenuAlt3 onClick={toggle} />
+      <GiMoneyStack>
+      </GiMoneyStack>
+      
           </div>
+          </Link>
         </div>
         {menu.map((item, index) => {
           return <SidebarItem key={index} item={item} isOpen={isOpen} />;
@@ -41,7 +48,7 @@ const Sidebar = ({ children }) => {
 
       <main
         style={{
-          paddingLeft: isOpen ? "190px" : "60px",
+          paddingLeft:"40px",
           transition: "all .5s",
         }}
       >

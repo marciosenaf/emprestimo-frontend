@@ -1,22 +1,22 @@
 .add-product {
-margin-bottom: 3rem;
-margin-left: 10px;
+  margin-bottom: 3rem;
+  margin-left: 10px;
 
 
-  form{
+  form {
     display: flex;
     column-gap: 20px;
     flex-wrap: wrap;
-    flex-flow:row wrap;
+    flex-flow: row wrap;
     gap: 3rem;
   }
 
-  .inputs{
+  .inputs {
     align-items: flex-start;
-    max-width: 200px;
     display: flex;
     flex-direction: column;
   }
+
   form {
 
     label {
@@ -26,14 +26,14 @@ margin-left: 10px;
       font-weight: 500;
       color: white;
     }
-    
+
     input,
     input[type="text"],
     input[type="number"],
     input[type="email"],
     input[type="password"] {
       font-weight: 300;
-      padding: 1rem;
+      padding: 1rem 33px;
       border: 1px solid #777;
       border-radius: 8px;
       margin-bottom: 20px;
@@ -41,9 +41,9 @@ margin-left: 10px;
   }
 }
 
-.Select{
+.Select {
   font-weight: 300;
-  padding: 1rem 26px;
+  padding: 1rem 48px;
   border: 1px solid #777;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -59,40 +59,71 @@ margin-left: 10px;
   display: block;
 }
 
-.editor{
-  width: clamp(500px, 100%, 400px,);
-background-color: rgb(255, 255, 255);
-border: 1px solid #777;
-border-radius: 4px;
+.editor {
+  width: clamp(500px, 100%, 400px, );
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #777;
+  border-radius: 4px;
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 856px) {
   .editor {
-    max-width: 485px;
+    max-width: 235px;
+  }
+
+  .ql-editor {
+    min-height: 323px;
+    max-height: 323px;
+  }
+}
+
+// @media screen and (max-width: 741px) {
+//   .editor {
+//     max-width: 285px;
+//   }
+// }
+
+@media screen and (max-width: 741px) {
+  .editor {
+    max-width: 235px;
   }
 }
 
 
 
 
-.--btns-primary-products{
-  padding: 8.6px 70px;
+.--btns-primary-products {
+  padding: 8.6px 93px;
   border-radius: 8px;
-  font-size: 15px ;
+  font-size: 15px;
   color: #fff;
   border-color: #777;
   background: var(--dark-blue);
   border-radius: 8px;
 }
+
 .--btns-primary-products:hover {
   color: var(--dark-blue);
-  background-color:#fff;
+  background-color: #fff;
   font-size: 15px;
 }
 
-@media screen and (max-width: 700px) {
-  .ql-toolbar  {
+@media screen and (max-width: 856px) {
+  .ql-toolbar {
     display: none;
   }
 
+}
+
+@media screen and (max-width: 594px) {
+  .add-product {
+    justify-content: center;
+    max-width: max-content;
+    margin-inline:    auto;
+    justify-content: center;
+} 
+
+.add-product form {
+  justify-content: center !important;
+} 
 }

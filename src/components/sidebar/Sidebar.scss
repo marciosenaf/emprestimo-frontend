@@ -19,13 +19,15 @@ main {
   z-index: 1;
 }
 
+
+
 .top_section {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px;
   transition: all 0.5s;
   background-color: var(--dark-blue);
-  height: 70px;
+  height: 60px;
 }
 .logo {
   transition: all 0.5s;
@@ -143,8 +145,3 @@ a {
 }
 
 
-@media screen and (max-width: 600px) {
-  .main {
-    padding-left: none;
-  }
-}
