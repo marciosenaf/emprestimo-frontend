@@ -65,6 +65,10 @@ const ProductDetail = () => {
   }, [isLoggedIn, isError, message, dispatch]);
 
 
+  if (!product) {
+    return <h4>Carregando...</h4>
+  }
+
   const id_tmp = localStorage.getItem("id");
   const data = product.payments.filter(r => r.user == id_tmp)
   const result = {
