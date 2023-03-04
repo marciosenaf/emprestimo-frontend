@@ -66,7 +66,7 @@ const ProductDetail = () => {
 
 
   if (!product) {
-    return <SpinnerImg/>
+    return <h2>Carregando...</h2>
   }
 
   const id_tmp = localStorage.getItem("id");
