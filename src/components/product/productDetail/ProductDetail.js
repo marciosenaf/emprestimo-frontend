@@ -98,7 +98,7 @@ const ProductDetail = () => {
       <Card cardClass="card">
         <div className="detail" >
           <h1 />
-          <h4 className="--color-white ">
+          <h4 className="--color-white h4_detail">
             <span className="badge" >Name:</span> &nbsp; {product.name}
           </h4>
           <p className="--color-dark p_detail">
