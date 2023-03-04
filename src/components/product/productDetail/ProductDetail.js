@@ -151,7 +151,7 @@ const ProductDetail = () => {
               <b className="--color-white b_detail">Criado em: </b> {new Date(product.createdAt).toLocaleString("pt-BR")}
             </p>
             <p className="--color-white p_detail">
-              <b className="--color-white b_detail">Ultima atualizacao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
+              <b className="--color-white b_detail">Ultima açao: </b> {new Date(product.updatedAt).toLocaleString("pt-BR")}
             </p>
             <br />
 
