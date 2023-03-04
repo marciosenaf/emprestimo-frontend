@@ -66,7 +66,7 @@ const ProductDetail = () => {
 
 
   if (!product) {
-    return <span>Produto nao encontrado</span>
+    return <SpinnerImg/>
   }
 
   const id_tmp = localStorage.getItem("id");
