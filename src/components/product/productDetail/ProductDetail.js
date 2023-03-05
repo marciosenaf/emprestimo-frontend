@@ -5,12 +5,11 @@ import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUs
 import { selectIsLoggedIn } from "../../../redux/features/auth/authSlice";
 import { getProduct, removePayment } from "../../../redux/features/product/productSlice";
 import Card from "../../card/Card";
-import { SpinnerImg } from "../../loader/Loader";
 import "./ProductDetail.scss";
 import DOMPurify from "dompurify";
 import formatcurrency from "../../../helpers/formatcurrency"
 import AddPayment from "../../../pages/add/AddPayment"
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { deleteProduct, getProducts } from "../../../redux/features/payment/paymentSlice";
@@ -71,12 +70,7 @@ const ProductDetail = () => {
 
   const id_tmp = localStorage.getItem("id");
   const data = product.payments.filter(r => r.user == id_tmp)
-  const result = {
-    "residualAmount": data.reduce((a, b) =>
-      a + Number(b.valor), 0
-    ),
-    "statement": data
-  }
+
   const { name, category, price, quantity, parcela } = product;
   const valorTotal = parseFloat(price) + price * (quantity / 100)
   const valorParcela = valorTotal / parcela

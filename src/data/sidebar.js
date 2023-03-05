@@ -1,7 +1,5 @@
 import {AiFillHome} from "react-icons/ai"
-import { FaCommentAlt } from "react-icons/fa"
 import { RiLockPasswordFill } from "react-icons/ri"
-import {GiMoneyStack} from "react-icons/gi"
 
 
 const menu = [
