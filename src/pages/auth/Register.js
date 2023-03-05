@@ -32,16 +32,16 @@ const Register = () => {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      return toast.error("All fields are required");
+      return toast.error("Preencha todos os campos");
     }
     if (password.length < 6) {
-      return toast.error("Passwords must be up to 6 characters");
+      return toast.error("Minimo de 6 caracteres");
     }
     if (!validateEmail(email)) {
-      return toast.error("Please enter a valid email");
+      return toast.error("digite um email válido");
     }
     if (password !== password2) {
-      return toast.error("Passwords do not match");
+      return toast.error("As senhas não coincidem");
     }
 
     const userData = {

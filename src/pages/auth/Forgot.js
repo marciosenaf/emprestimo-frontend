@@ -12,11 +12,11 @@ const Forgot = () => {
   const forgot = async (e) => {
     e.preventDefault();
     if (!email) {
-      return toast.error("Please enter an email");
+      return toast.error("Por favor, insira o email");
     }
 
     if (!validateEmail(email)) {
-      return toast.error("Please enter a valid email");
+      return toast.error("Por favor, coloque um email valido");
     }
 
     const userData = {

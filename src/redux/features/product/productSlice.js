@@ -191,8 +191,8 @@ const productSlice = createSlice({
         state.isSuccess = true;
         state.isError = false;
         console.log(action.payload);
-        // state.products.push(action.payload);
-        toast.success("Product added successfully");
+        state.products.push(action.payload);
+        toast.success("Produto adicionado com sucesso");
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.isLoading = false;
