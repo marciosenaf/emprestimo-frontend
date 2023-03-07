@@ -192,7 +192,7 @@ const productSlice = createSlice({
         state.isError = false;
         console.log(action.payload);
         // state.products.push(action.payload);
-        toast.success("Product added successfully");
+        toast.success("Produto adicionado com sucesso");
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -223,7 +223,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product deleted successfully");
+        toast.success("Produto excluído com sucesso");
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -253,7 +253,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        toast.success("Product updated successfully");
+        toast.success("Produto atualizado com sucesso");
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.isLoading = false;
